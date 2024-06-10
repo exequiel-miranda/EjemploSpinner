@@ -16,6 +16,7 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        //Para quitar el título en la parte superior de la aplicacion
         supportRequestWindowFeature(Window.FEATURE_NO_TITLE)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
