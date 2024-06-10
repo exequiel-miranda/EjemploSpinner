@@ -15,7 +15,6 @@ import kotlinx.coroutines.withContext
 import modelo.ClaseConexion
 import java.util.UUID
 
-
 class doctores : Fragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -44,7 +43,7 @@ class doctores : Fragment() {
 
                 //2- creo una variable que contenga un PrepareStatement
                 val addProducto =
-                    claseC?.prepareStatement("insert into tbDoctores(DoctorUUID, Nombre, Especialidad, Telefono) values(?, ?, ?, ?)")!!
+                    claseC?.prepareStatement("insert into tbDoctores(DoctorUUID, nombreDoctor, Especialidad, Telefono) values(?, ?, ?, ?)")!!
                 addProducto.setString(1, UUID.randomUUID().toString())
                 addProducto.setString(2, txtNombreDoctor.text.toString())
                 addProducto.setString(3, txtEspecialidadDoctor.text.toString())
