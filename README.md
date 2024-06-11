@@ -1,22 +1,22 @@
 Esta aplicación es para realizar la práctica del spinner
 Esta aplicacion aun no tiene programdo el Spinner y en claes lo vamos a programar
+</br></br>
 
-
-CREATE TABLE tbDoctores (
-    DoctorUUID VARCHAR2(50) PRIMARY KEY,
-    nombreDoctor VARCHAR2(50),
-    Especialidad VARCHAR2(50),
-    Telefono VARCHAR2(20)
+CREATE TABLE tbDoctores (</br>
+    DoctorUUID VARCHAR2(50) PRIMARY KEY,</br>
+    nombreDoctor VARCHAR2(50),</br>
+    Especialidad VARCHAR2(50),</br>
+    Telefono VARCHAR2(20)</br>
 );
-
-CREATE TABLE tbPacientes (
-    PacienteUUID VARCHAR2(50) PRIMARY KEY,
-    DoctorUUID VARCHAR2(50),
-    Nombre VARCHAR2(50),
-    FechaNacimiento VARCHAR2(50),
-    Direccion VARCHAR2(200),
-    FOREIGN KEY (DoctorUUID) REFERENCES tbDoctores(DoctorUUID)
-);
-
-select * from tbDoctores;
-select * from tbPacientes;
+</br></br>
+CREATE TABLE tbPacientes (</br>
+    PacienteUUID VARCHAR2(50) PRIMARY KEY,</br>
+    DoctorUUID VARCHAR2(50),</br>
+    Nombre VARCHAR2(50),</br>
+    FechaNacimiento VARCHAR2(50),</br>
+    Direccion VARCHAR2(200),</br>
+    FOREIGN KEY (DoctorUUID) REFERENCES tbDoctores(DoctorUUID)</br>
+);</br>
+</br>
+select * from tbDoctores;</br>
+select * from tbPacientes;</br>
