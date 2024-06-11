@@ -39,3 +39,8 @@ select * from tbPacientes;</br></br>
             )</br>
             datePickerDialog.show()</br>
         }</br>
+
+</br>
+//Luego de programar el calendario, modifico el XML para que no aparezca el teclado</br>
+ android:inputType="none"</br>
+ android:focusable="false"</br>
