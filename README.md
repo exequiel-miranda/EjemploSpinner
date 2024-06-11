@@ -19,4 +19,23 @@ CREATE TABLE tbPacientes (</br>
 );</br>
 </br>
 select * from tbDoctores;</br>
-select * from tbPacientes;</br>
+select * from tbPacientes;</br></br>
+
+
+//Mostrar el calendario al hacer click en el EditText txtFechaNacimientoPaciente</br>
+        txtFechaNacimiento.setOnClickListener {</br>
+            val calendario = Calendar.getInstance()</br>
+            val anio = calendario.get(Calendar.YEAR)</br>
+            val mes = calendario.get(Calendar.MONTH)</br>
+            val dia = calendario.get(Calendar.DAY_OF_MONTH)</br>
+            val datePickerDialog = DatePickerDialog(</br>
+                requireContext(),</br>
+                { view, anioSeleccionado, mesSeleccionado, diaSeleccionado -></br>
+                    val fechaSeleccionada =</br>
+                        "$diaSeleccionado/${mesSeleccionado + 1}/$anioSeleccionado"</br>
+                    txtFechaNacimiento.setText(fechaSeleccionada)</br>
+                },</br>
+                anio, mes, dia</br>
+            )</br>
+            datePickerDialog.show()</br>
+        }</br>
