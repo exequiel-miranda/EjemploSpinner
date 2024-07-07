@@ -23,22 +23,30 @@ select * from tbPacientes;</br></br>
 
 
 Ejemplo para colocar un calendario:</br></br>
-  //Mostrar el calendario al hacer click en el EditText txtFechaNacimientoPaciente</br>
-        txtFechaNacimientoPaciente.setOnClickListener {</br>
-            val calendario = Calendar.getInstance()</br>
-            val anio = calendario.get(Calendar.YEAR)</br>
-            val mes = calendario.get(Calendar.MONTH)</br>
-            val dia = calendario.get(Calendar.DAY_OF_MONTH)</br>
-            val datePickerDialog = DatePickerDialog(</br>
-                requireContext(),</br>
-                { view, anioSeleccionado, mesSeleccionado, diaSeleccionado -></br>
-                    val fechaSeleccionada =</br>
-                        "$diaSeleccionado/${mesSeleccionado + 1}/$anioSeleccionado"</br>
-                    txtFechaNacimientoPaciente.setText(fechaSeleccionada)</br>
-                },</br>
-                anio, mes, dia</br>
-            )</br>
-            datePickerDialog.show()</br>
-        }</br>
+  // Mostrar el calendario al hacer click en el EditText txtFechaNacimientoPaciente
 
+        txtFechaNacimiento.setOnClickListener {
+            val calendario = Calendar.getInstance()
+            val anio = calendario.get(Calendar.YEAR)
+            val mes = calendario.get(Calendar.MONTH)
+            val dia = calendario.get(Calendar.DAY_OF_MONTH)
+
+            // Calcular la fecha máxima (hace 18 años a partir de hoy)
+            val fechaMaxima = Calendar.getInstance()
+            fechaMaxima.set(anio - 18, mes, dia)
+
+            val datePickerDialog = DatePickerDialog(
+                requireContext(),
+                { view, anioSeleccionado, mesSeleccionado, diaSeleccionado ->
+                    val fechaSeleccionada = "$diaSeleccionado/${mesSeleccionado + 1}/$anioSeleccionado"
+                    txtFechaNacimiento.setText(fechaSeleccionada)
+                },
+                anio, mes, dia
+            )
+
+            // Configurar la fecha máxima a hace 18 años a partir de hoy
+            datePickerDialog.datePicker.maxDate = fechaMaxima.timeInMillis
+
+            datePickerDialog.show()
+        }
 
