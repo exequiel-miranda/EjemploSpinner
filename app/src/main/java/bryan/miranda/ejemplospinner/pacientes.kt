@@ -77,24 +77,31 @@ class pacientes : Fragment() {
             }
         }
 
-//Mostrar el calendario al hacer click en el EditText txtFechaNacimientoPaciente
+// Mostrar el calendario al hacer click en el EditText txtFechaNacimientoPaciente
         txtFechaNacimiento.setOnClickListener {
             val calendario = Calendar.getInstance()
             val anio = calendario.get(Calendar.YEAR)
             val mes = calendario.get(Calendar.MONTH)
             val dia = calendario.get(Calendar.DAY_OF_MONTH)
+
+            // Calcular la fecha máxima (hace 18 años a partir de hoy)
+            val fechaMaxima = Calendar.getInstance()
+            fechaMaxima.set(anio - 18, mes, dia)
+
             val datePickerDialog = DatePickerDialog(
                 requireContext(),
                 { view, anioSeleccionado, mesSeleccionado, diaSeleccionado ->
-                    val fechaSeleccionada =
-                        "$diaSeleccionado/${mesSeleccionado + 1}/$anioSeleccionado"
+                    val fechaSeleccionada = "$diaSeleccionado/${mesSeleccionado + 1}/$anioSeleccionado"
                     txtFechaNacimiento.setText(fechaSeleccionada)
                 },
                 anio, mes, dia
             )
+
+            // Configurar la fecha máxima a hace 18 años a partir de hoy
+            datePickerDialog.datePicker.maxDate = fechaMaxima.timeInMillis
+
             datePickerDialog.show()
         }
-
 
 
         //Programemos que se guarde mi paciente
